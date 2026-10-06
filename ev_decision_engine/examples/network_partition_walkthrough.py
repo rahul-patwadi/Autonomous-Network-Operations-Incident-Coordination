@@ -1,12 +1,12 @@
 """
-nan_loss_walkthrough.py
+network_partition_walkthrough.py
 
-Walks through a single NAN_LOSS training-job incident as it evolves from one
+Walks through a single network_partition incident as it evolves from one
 low-confidence signal to a corroborated one, and shows how policy.decide()'s
 output changes in response.
 
 Run with:
-    uv run python examples/nan_loss_walkthrough.py
+    uv run python -m examples.network_partition_walkthrough
 """
 
 from datetime import UTC, datetime
@@ -16,16 +16,17 @@ from policy import decide
 from schemas import Event, Message, TrustMetadata
 
 EVENT = Event(
-    event_type="NAN_LOSS",
+    event_type="network_partition",
     region="us-east-1",
     severity=0.75,
     timestamp=datetime(2026, 9, 20, 12, 0, 0, tzinfo=UTC),
-    correlation_id="train-job-4471",
+    correlation_id="partition-4471",
+    affected_node_pair="node-3 <-> node-7",  # type: ignore[call-arg]
 )
 
 # v1: a single low-confidence signal, not yet corroborated.
 TRUST_V1 = TrustMetadata(
-    source_agent="loss-monitor-1",
+    source_agent="netflow-monitor-1",
     confidence=0.6,
     historical_false_positive_rate=0.1,
     is_directly_observed=True,
@@ -47,6 +48,7 @@ def show(label: str, message: Message) -> None:
     decision = decide(message)
 
     print(f"--- {label} ---")
+    print(f"affected_node_pair = {getattr(message.event, 'affected_node_pair', None)}")
     print(f"corroborating_source_count = {message.trust.corroborating_source_count}")
     print(f"P(real incident) ~= {p_real:.3f}")
     print("EV per candidate action:")
