@@ -22,6 +22,8 @@ class Event(BaseModel):
     severity: float
     timestamp: datetime
     correlation_id: str
+    affected_node_pair: str | None = None
+    latency_ms: float | None = None
 
 
 class TrustMetadata(BaseModel):

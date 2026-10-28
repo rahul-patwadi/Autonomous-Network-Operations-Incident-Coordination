@@ -21,7 +21,7 @@ EVENT = Event(
     severity=0.75,
     timestamp=datetime(2026, 9, 20, 12, 0, 0, tzinfo=UTC),
     correlation_id="partition-4471",
-    affected_node_pair="node-3 <-> node-7",  # type: ignore[call-arg]
+    affected_node_pair="node-3 <-> node-7",
 )
 
 # v1: a single low-confidence signal, not yet corroborated.

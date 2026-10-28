@@ -7,7 +7,7 @@ Accepted
 ## Context
 
 The system decides how to handle incoming incident signals on a simulated multi-region
-Kubernetes platform: whether to stay silent, ask for verification, notify, escalate,
+network: whether to stay silent, ask for verification, notify, escalate,
 broadcast, propose a fix, or request approval for a fix. Signals arrive from automated
 monitors with uneven reliability, so each one carries trust metadata (confidence,
 historical false-positive rate, corroboration, TTL, asset criticality) alongside the event.
@@ -46,7 +46,9 @@ EV(action) = TaskBenefit(action) - CommunicationCost(action) - Risk(action)
 - **CommunicationCost** = `COMM_COST[action]`. A flat interruption cost, independent of
   whether the incident is real.
 - **Risk** = `false_positive_risk + silence_risk`.
-  - `false_positive_risk = (1 - P(real)) * DISRUPTION_COST[action]`
+  - `false_positive_risk = (1 - P(real)) * DISRUPTION_COST[action] * impact_scale`, where
+    `impact_scale = 1 + asset_criticality * blast_radius` for `PROPOSE_REMEDIATION` and
+    `REQUEST_APPROVAL` and `1` for all other actions
   - `silence_risk = P(real) * severity * asset_criticality * blast_radius`, applied only
     to actions that leave a real incident unhandled (`SUPPRESS`, `VERIFY`).
 

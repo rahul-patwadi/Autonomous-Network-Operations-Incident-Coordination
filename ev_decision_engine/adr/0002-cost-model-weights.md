@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted (provisional; weights pending calibration)
+Accepted (calibrated against the 36-scenario eval set)
 
 ## Context
 
@@ -33,6 +33,28 @@ Current values:
 | `BROADCAST`           | 0.60      | 0.90        | 0.70            |
 | `PROPOSE_REMEDIATION` | 0.25      | 0.75        | 0.50            |
 | `REQUEST_APPROVAL`    | 0.35      | 0.85        | 0.20            |
+
+## Calibration status
+
+The weight tables are hand-picked estimates, to be calibrated against the 36-scenario
+labeled evaluation set (`eval/scenarios.json`, run with `eval/run_eval.py`).
+
+- **Baseline (measured):** with the initial values above, `EV_FLOOR = 0.05`,
+  `HIGH_IMPACT_RISK_THRESHOLD = 0.4` and an unscaled false-positive term, decision
+  agreement was **14/36 = 38.9% (~39%)**. Dominant failures: `VERIFY -> SUPPRESS` (8),
+  `ESCALATE -> REQUEST_APPROVAL` (7), `SEND -> SUPPRESS` (2).
+- **Calibration applied:** `EV_FLOOR` lowered to `0.0`, `HIGH_IMPACT_RISK_THRESHOLD`
+  raised to `0.55`, and the false-positive risk term scaled by
+  `impact_scale = 1 + asset_criticality * blast_radius` **only for system-changing
+  actions** (`PROPOSE_REMEDIATION`, `REQUEST_APPROVAL`). Communication actions (`SEND`,
+  `ESCALATE`, `BROADCAST`) keep `impact_scale = 1`. A first attempt that applied the
+  scaling to every action scored 12/36 = 33.3%, because it penalized communication on
+  critical assets and pushed decisions toward `REQUEST_APPROVAL`.
+- **After calibration (measured):** **21/36 = 58.3% (~58%)**, up from the 38.9% baseline
+  (+19.4 points). The change that drove the gain was restricting the criticality /
+  blast-radius scaling to system-changing actions. Remaining errors: `VERIFY -> SUPPRESS`
+  (7), `BROADCAST -> ESCALATE` (4), `SEND -> SUPPRESS` (2), `ESCALATE -> SUPPRESS` (1),
+  `VERIFY -> SEND` (1).
 
 ## Rationale
 
@@ -70,3 +92,16 @@ Relative scale reasoning:
   `eval/generate_events.py` produces unlabeled inputs and does not substitute for it.
 - Weights are global, not per incident type. If calibration shows type-specific
   differences, that needs a new decision.
+
+## Known limitations / future work
+
+- **`VERIFY` is never selected.** The cost model rewards catching incidents but does not
+  model the information value of reducing uncertainty before acting, so `VERIFY` always
+  scores below `SUPPRESS` or an acting option. Modeling the value of that information is
+  future work. It accounts for most remaining eval errors (`VERIFY -> SUPPRESS`: 7).
+- **`ttl_seconds` is unused in scoring.** It is captured in `TrustMetadata`, so a stale
+  signal is scored the same as a fresh one. Staleness decay of `P(real)` is future work
+  (`tests/test_cost_model.py::test_stale_signal_is_discounted` is an `xfail` marking this).
+- When `PROPOSE_REMEDIATION` is excluded and every remaining EV is negative, the policy
+  falls back to `SUPPRESS` even if `SUPPRESS` has the worst EV.
+- `BROADCAST` is also never selected on the eval set (4 expected).

@@ -12,6 +12,7 @@ import random
 import uuid
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from typing import cast
 
 from schemas import Event, Message, TrustMetadata
 
@@ -117,8 +118,8 @@ def generate_message(
     p = PROFILES[category]
     now = now or datetime.now(UTC)
 
-    corr_lo, corr_hi = p["corroborating"]  # type: ignore[misc]
-    ttl_lo, ttl_hi = p["ttl"]  # type: ignore[misc]
+    corr_lo, corr_hi = cast("tuple[int, int]", p["corroborating"])
+    ttl_lo, ttl_hi = cast("tuple[int, int]", p["ttl"])
 
     event = Event(
         event_type=event_type,
@@ -126,8 +127,8 @@ def generate_message(
         severity=round(rng.uniform(*p["severity"]), 3),  # type: ignore[misc]
         timestamp=now - timedelta(seconds=rng.randint(0, 3600)),
         correlation_id=str(uuid.UUID(int=rng.getrandbits(128), version=4)),
-        affected_node_pair=_node_pair(rng, event_type),  # type: ignore[call-arg]
-        latency_ms=_latency(rng, event_type, p["latency_scale"]),  # type: ignore[arg-type,call-arg]
+        affected_node_pair=_node_pair(rng, event_type),
+        latency_ms=_latency(rng, event_type, cast("tuple[float, float]", p["latency_scale"])),
     )
     trust = TrustMetadata(
         source_agent=rng.choice(SOURCE_AGENTS),

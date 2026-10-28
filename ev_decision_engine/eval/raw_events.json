@@ -1,0 +1,1202 @@
+[
+  {
+    "event": {
+      "event_type": "network_partition",
+      "region": "us-west-2",
+      "severity": 0.849,
+      "timestamp": "2026-10-25T23:56:35.068984Z",
+      "correlation_id": "1818e811-892f-402b-923f-0824128b2f33",
+      "affected_node_pair": "node-12 <-> node-19",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.973,
+      "historical_false_positive_rate": 0.034,
+      "is_directly_observed": true,
+      "corroborating_source_count": 6,
+      "ttl_seconds": 886,
+      "asset_criticality": 0.772
+    }
+  },
+  {
+    "event": {
+      "event_type": "gradient_sync_latency",
+      "region": "us-east-1",
+      "severity": 0.681,
+      "timestamp": "2026-10-25T23:51:25.068984Z",
+      "correlation_id": "a09f76b5-a170-4338-b926-3059f28c105d",
+      "affected_node_pair": "node-19 <-> node-2",
+      "latency_ms": 2744.6
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.467,
+      "historical_false_positive_rate": 0.193,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 416,
+      "asset_criticality": 0.539
+    }
+  },
+  {
+    "event": {
+      "event_type": "service_discovery_failure",
+      "region": "ap-south-1",
+      "severity": 0.827,
+      "timestamp": "2026-10-25T23:04:10.068984Z",
+      "correlation_id": "94e3bf91-1a61-4be2-ae44-158bae97ba94",
+      "affected_node_pair": "node-7 <-> node-12",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.904,
+      "historical_false_positive_rate": 0.017,
+      "is_directly_observed": true,
+      "corroborating_source_count": 4,
+      "ttl_seconds": 2633,
+      "asset_criticality": 0.904
+    }
+  },
+  {
+    "event": {
+      "event_type": "packet_loss",
+      "region": "eu-west-1",
+      "severity": 0.866,
+      "timestamp": "2026-10-25T23:28:56.068984Z",
+      "correlation_id": "cb5c7427-3f98-4277-8cbd-87ad5c90a958",
+      "affected_node_pair": "node-6 <-> node-8",
+      "latency_ms": 298.1
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.9,
+      "historical_false_positive_rate": 0.106,
+      "is_directly_observed": true,
+      "corroborating_source_count": 5,
+      "ttl_seconds": 3094,
+      "asset_criticality": 0.994
+    }
+  },
+  {
+    "event": {
+      "event_type": "bandwidth_saturation",
+      "region": "eu-central-1",
+      "severity": 0.091,
+      "timestamp": "2026-10-25T23:36:31.068984Z",
+      "correlation_id": "6bf46c69-7d2c-4f82-aeea-cbe226e87555",
+      "affected_node_pair": "node-2 <-> node-3",
+      "latency_ms": 155.1
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.476,
+      "historical_false_positive_rate": 0.818,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 284,
+      "asset_criticality": 0.253
+    }
+  },
+  {
+    "event": {
+      "event_type": "load_balancer_failure",
+      "region": "us-east-1",
+      "severity": 0.986,
+      "timestamp": "2026-10-25T23:27:31.068984Z",
+      "correlation_id": "0f88080b-10a3-46b2-aa05-e11ab2715945",
+      "affected_node_pair": "node-10 <-> node-19",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.854,
+      "historical_false_positive_rate": 0.052,
+      "is_directly_observed": true,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 2491,
+      "asset_criticality": 0.807
+    }
+  },
+  {
+    "event": {
+      "event_type": "connection_timeout",
+      "region": "eu-central-1",
+      "severity": 0.374,
+      "timestamp": "2026-10-25T23:07:26.068984Z",
+      "correlation_id": "3f63af83-bd05-41e6-a11c-70cf49952399",
+      "affected_node_pair": "node-13 <-> node-20",
+      "latency_ms": 20214.5
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.478,
+      "historical_false_positive_rate": 0.268,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 560,
+      "asset_criticality": 0.739
+    }
+  },
+  {
+    "event": {
+      "event_type": "cross_region_latency_spike",
+      "region": "eu-central-1",
+      "severity": 0.997,
+      "timestamp": "2026-10-25T23:13:16.068984Z",
+      "correlation_id": "3b1287ff-f52d-4f5d-a164-99c9e25a7605",
+      "affected_node_pair": "node-5 <-> node-3",
+      "latency_ms": 1943.9
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.925,
+      "historical_false_positive_rate": 0.011,
+      "is_directly_observed": true,
+      "corroborating_source_count": 4,
+      "ttl_seconds": 1676,
+      "asset_criticality": 0.785
+    }
+  },
+  {
+    "event": {
+      "event_type": "network_partition",
+      "region": "ap-south-1",
+      "severity": 0.142,
+      "timestamp": "2026-10-25T23:21:13.068984Z",
+      "correlation_id": "b0c4312d-2020-4626-b3fe-39c0519088f5",
+      "affected_node_pair": "node-17 <-> node-2",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.515,
+      "historical_false_positive_rate": 0.801,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 233,
+      "asset_criticality": 0.19
+    }
+  },
+  {
+    "event": {
+      "event_type": "gradient_sync_latency",
+      "region": "eu-central-1",
+      "severity": 0.066,
+      "timestamp": "2026-10-25T23:55:17.068984Z",
+      "correlation_id": "298cb3a5-70cc-4c31-b571-810afc132d0d",
+      "affected_node_pair": "node-4 <-> node-11",
+      "latency_ms": 1090.8
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.2,
+      "historical_false_positive_rate": 0.518,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 43,
+      "asset_criticality": 0.075
+    }
+  },
+  {
+    "event": {
+      "event_type": "service_discovery_failure",
+      "region": "eu-central-1",
+      "severity": 0.087,
+      "timestamp": "2026-10-25T23:42:39.068984Z",
+      "correlation_id": "5d39d0a8-9a2e-480f-98ee-8571f4998d7c",
+      "affected_node_pair": "node-4 <-> node-16",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.368,
+      "historical_false_positive_rate": 0.59,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 165,
+      "asset_criticality": 0.218
+    }
+  },
+  {
+    "event": {
+      "event_type": "packet_loss",
+      "region": "ap-south-1",
+      "severity": 0.359,
+      "timestamp": "2026-10-25T23:23:49.068984Z",
+      "correlation_id": "8b0d590b-b0a8-44e5-a587-be6b5c9bcf35",
+      "affected_node_pair": "node-1 <-> node-17",
+      "latency_ms": 172.1
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.694,
+      "historical_false_positive_rate": 0.206,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 484,
+      "asset_criticality": 0.697
+    }
+  },
+  {
+    "event": {
+      "event_type": "bandwidth_saturation",
+      "region": "ap-south-1",
+      "severity": 0.832,
+      "timestamp": "2026-10-25T23:44:39.068984Z",
+      "correlation_id": "fc241d0b-c9d4-48b1-8fbf-33609cfc8652",
+      "affected_node_pair": "node-7 <-> node-8",
+      "latency_ms": 570.0
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.838,
+      "historical_false_positive_rate": 0.064,
+      "is_directly_observed": true,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 1744,
+      "asset_criticality": 0.842
+    }
+  },
+  {
+    "event": {
+      "event_type": "load_balancer_failure",
+      "region": "ap-south-1",
+      "severity": 0.289,
+      "timestamp": "2026-10-25T23:29:21.068984Z",
+      "correlation_id": "fcf00fec-b91e-49e5-afe0-9f07cefe2a1f",
+      "affected_node_pair": "node-12 <-> node-20",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.277,
+      "historical_false_positive_rate": 0.552,
+      "is_directly_observed": true,
+      "corroborating_source_count": 0,
+      "ttl_seconds": 277,
+      "asset_criticality": 0.268
+    }
+  },
+  {
+    "event": {
+      "event_type": "connection_timeout",
+      "region": "us-east-1",
+      "severity": 0.542,
+      "timestamp": "2026-10-25T23:15:18.068984Z",
+      "correlation_id": "15b40aeb-a4a4-4eff-8cb5-73d95810d60e",
+      "affected_node_pair": "node-4 <-> node-13",
+      "latency_ms": 18459.1
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.617,
+      "historical_false_positive_rate": 0.179,
+      "is_directly_observed": false,
+      "corroborating_source_count": 2,
+      "ttl_seconds": 208,
+      "asset_criticality": 0.71
+    }
+  },
+  {
+    "event": {
+      "event_type": "cross_region_latency_spike",
+      "region": "eu-central-1",
+      "severity": 0.535,
+      "timestamp": "2026-10-25T23:09:08.068984Z",
+      "correlation_id": "28aaca51-b98c-47c2-95bd-448ff26149ed",
+      "affected_node_pair": "node-6 <-> node-5",
+      "latency_ms": 840.4
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.767,
+      "historical_false_positive_rate": 0.386,
+      "is_directly_observed": true,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 605,
+      "asset_criticality": 0.646
+    }
+  },
+  {
+    "event": {
+      "event_type": "network_partition",
+      "region": "ap-south-1",
+      "severity": 0.887,
+      "timestamp": "2026-10-25T23:58:25.068984Z",
+      "correlation_id": "b9f3635c-f88c-422b-8ca2-a92b03a56cc1",
+      "affected_node_pair": "node-4 <-> node-17",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.882,
+      "historical_false_positive_rate": 0.106,
+      "is_directly_observed": true,
+      "corroborating_source_count": 4,
+      "ttl_seconds": 714,
+      "asset_criticality": 0.776
+    }
+  },
+  {
+    "event": {
+      "event_type": "gradient_sync_latency",
+      "region": "us-west-2",
+      "severity": 0.941,
+      "timestamp": "2026-10-25T23:37:37.068984Z",
+      "correlation_id": "d58dcdb4-6b44-4806-8b5a-b3ee4265bb31",
+      "affected_node_pair": "node-5 <-> node-2",
+      "latency_ms": 4875.8
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.971,
+      "historical_false_positive_rate": 0.083,
+      "is_directly_observed": true,
+      "corroborating_source_count": 7,
+      "ttl_seconds": 2322,
+      "asset_criticality": 0.948
+    }
+  },
+  {
+    "event": {
+      "event_type": "service_discovery_failure",
+      "region": "us-west-2",
+      "severity": 0.563,
+      "timestamp": "2026-10-25T23:24:08.068984Z",
+      "correlation_id": "70ac06ac-df70-4017-84c9-d78d82b33599",
+      "affected_node_pair": "node-20 <-> node-1",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.51,
+      "historical_false_positive_rate": 0.276,
+      "is_directly_observed": false,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 183,
+      "asset_criticality": 0.497
+    }
+  },
+  {
+    "event": {
+      "event_type": "packet_loss",
+      "region": "ap-south-1",
+      "severity": 0.871,
+      "timestamp": "2026-10-25T23:06:52.068984Z",
+      "correlation_id": "0e8bec94-8f6f-415f-a21b-37ca1b29fc99",
+      "affected_node_pair": "node-8 <-> node-7",
+      "latency_ms": 319.7
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.896,
+      "historical_false_positive_rate": 0.072,
+      "is_directly_observed": true,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 2415,
+      "asset_criticality": 0.798
+    }
+  },
+  {
+    "event": {
+      "event_type": "bandwidth_saturation",
+      "region": "ap-south-1",
+      "severity": 0.555,
+      "timestamp": "2026-10-25T23:12:35.068984Z",
+      "correlation_id": "888564e8-8216-458f-b3cc-ef0346f5a1b4",
+      "affected_node_pair": "node-16 <-> node-17",
+      "latency_ms": 420.5
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.757,
+      "historical_false_positive_rate": 0.431,
+      "is_directly_observed": true,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 327,
+      "asset_criticality": 0.728
+    }
+  },
+  {
+    "event": {
+      "event_type": "load_balancer_failure",
+      "region": "us-east-1",
+      "severity": 0.148,
+      "timestamp": "2026-10-25T23:38:18.068984Z",
+      "correlation_id": "6da79a87-3d9a-4079-abd0-d7fb12926185",
+      "affected_node_pair": "node-3 <-> node-7",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.474,
+      "historical_false_positive_rate": 0.854,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 103,
+      "asset_criticality": 0.139
+    }
+  },
+  {
+    "event": {
+      "event_type": "connection_timeout",
+      "region": "eu-central-1",
+      "severity": 0.105,
+      "timestamp": "2026-10-25T23:53:27.068984Z",
+      "correlation_id": "29acf1a5-7cbd-4f5a-a28a-f60465f42986",
+      "affected_node_pair": "node-8 <-> node-6",
+      "latency_ms": 6120.8
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.341,
+      "historical_false_positive_rate": 0.64,
+      "is_directly_observed": false,
+      "corroborating_source_count": 0,
+      "ttl_seconds": 217,
+      "asset_criticality": 0.057
+    }
+  },
+  {
+    "event": {
+      "event_type": "cross_region_latency_spike",
+      "region": "eu-central-1",
+      "severity": 0.631,
+      "timestamp": "2026-10-25T23:33:38.068984Z",
+      "correlation_id": "4ba2e161-9fb9-4f50-8476-8b8c54dd0ba5",
+      "affected_node_pair": "node-17 <-> node-3",
+      "latency_ms": 926.8
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.79,
+      "historical_false_positive_rate": 0.155,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 305,
+      "asset_criticality": 0.472
+    }
+  },
+  {
+    "event": {
+      "event_type": "network_partition",
+      "region": "eu-central-1",
+      "severity": 0.262,
+      "timestamp": "2026-10-25T23:13:44.068984Z",
+      "correlation_id": "67ec326a-4234-4354-b22d-2882d1a89b37",
+      "affected_node_pair": "node-5 <-> node-18",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.4,
+      "historical_false_positive_rate": 0.765,
+      "is_directly_observed": true,
+      "corroborating_source_count": 0,
+      "ttl_seconds": 123,
+      "asset_criticality": 0.199
+    }
+  },
+  {
+    "event": {
+      "event_type": "gradient_sync_latency",
+      "region": "us-east-1",
+      "severity": 0.209,
+      "timestamp": "2026-10-25T23:05:09.068984Z",
+      "correlation_id": "db31ccd2-9bb1-43e1-9570-266b42b38755",
+      "affected_node_pair": "node-8 <-> node-3",
+      "latency_ms": 704.1
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.359,
+      "historical_false_positive_rate": 0.603,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 96,
+      "asset_criticality": 0.065
+    }
+  },
+  {
+    "event": {
+      "event_type": "service_discovery_failure",
+      "region": "us-east-1",
+      "severity": 0.738,
+      "timestamp": "2026-10-25T23:42:00.068984Z",
+      "correlation_id": "eea7bb64-33a7-4568-ae5f-950c0ce5af69",
+      "affected_node_pair": "node-10 <-> node-17",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.551,
+      "historical_false_positive_rate": 0.285,
+      "is_directly_observed": true,
+      "corroborating_source_count": 2,
+      "ttl_seconds": 138,
+      "asset_criticality": 0.798
+    }
+  },
+  {
+    "event": {
+      "event_type": "packet_loss",
+      "region": "us-east-1",
+      "severity": 0.233,
+      "timestamp": "2026-10-25T23:22:15.068984Z",
+      "correlation_id": "7989e9d0-83a4-4629-b080-3889fa619774",
+      "affected_node_pair": "node-8 <-> node-15",
+      "latency_ms": 39.8
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.43,
+      "historical_false_positive_rate": 0.696,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 140,
+      "asset_criticality": 0.394
+    }
+  },
+  {
+    "event": {
+      "event_type": "bandwidth_saturation",
+      "region": "us-west-2",
+      "severity": 0.851,
+      "timestamp": "2026-10-25T23:36:09.068984Z",
+      "correlation_id": "213bca7f-d644-4e2f-8dec-6823fb5c9d56",
+      "affected_node_pair": "node-1 <-> node-3",
+      "latency_ms": 538.2
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.882,
+      "historical_false_positive_rate": 0.016,
+      "is_directly_observed": true,
+      "corroborating_source_count": 6,
+      "ttl_seconds": 2672,
+      "asset_criticality": 0.901
+    }
+  },
+  {
+    "event": {
+      "event_type": "load_balancer_failure",
+      "region": "us-west-2",
+      "severity": 0.923,
+      "timestamp": "2026-10-25T23:56:47.068984Z",
+      "correlation_id": "44df96ff-2854-4424-af73-3b05759eb559",
+      "affected_node_pair": "node-15 <-> node-1",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.869,
+      "historical_false_positive_rate": 0.046,
+      "is_directly_observed": false,
+      "corroborating_source_count": 5,
+      "ttl_seconds": 1601,
+      "asset_criticality": 0.71
+    }
+  },
+  {
+    "event": {
+      "event_type": "connection_timeout",
+      "region": "us-west-2",
+      "severity": 0.493,
+      "timestamp": "2026-10-25T23:59:48.068984Z",
+      "correlation_id": "79823eb2-1579-4a0a-a1b2-480c55d85e8d",
+      "affected_node_pair": "node-9 <-> node-17",
+      "latency_ms": 16811.0
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.627,
+      "historical_false_positive_rate": 0.122,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 267,
+      "asset_criticality": 0.53
+    }
+  },
+  {
+    "event": {
+      "event_type": "cross_region_latency_spike",
+      "region": "us-east-1",
+      "severity": 0.125,
+      "timestamp": "2026-10-25T23:16:53.068984Z",
+      "correlation_id": "f527b5c2-95e8-493e-95a0-a8ae3b996870",
+      "affected_node_pair": "node-17 <-> node-5",
+      "latency_ms": 619.9
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.336,
+      "historical_false_positive_rate": 0.597,
+      "is_directly_observed": false,
+      "corroborating_source_count": 0,
+      "ttl_seconds": 175,
+      "asset_criticality": 0.303
+    }
+  },
+  {
+    "event": {
+      "event_type": "network_partition",
+      "region": "us-east-1",
+      "severity": 0.68,
+      "timestamp": "2026-10-25T23:11:04.068984Z",
+      "correlation_id": "6de2fb1f-a098-4691-8352-bc85e456559c",
+      "affected_node_pair": "node-17 <-> node-5",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.714,
+      "historical_false_positive_rate": 0.308,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 822,
+      "asset_criticality": 0.613
+    }
+  },
+  {
+    "event": {
+      "event_type": "gradient_sync_latency",
+      "region": "us-west-2",
+      "severity": 0.384,
+      "timestamp": "2026-10-25T23:57:01.068984Z",
+      "correlation_id": "f5a2d879-5c57-432b-a31a-49dd22126540",
+      "affected_node_pair": "node-4 <-> node-13",
+      "latency_ms": 3280.1
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.468,
+      "historical_false_positive_rate": 0.126,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 621,
+      "asset_criticality": 0.469
+    }
+  },
+  {
+    "event": {
+      "event_type": "service_discovery_failure",
+      "region": "us-east-1",
+      "severity": 0.937,
+      "timestamp": "2026-10-25T23:25:32.068984Z",
+      "correlation_id": "a8c7d9e0-1789-419f-8902-dafce5d9fe81",
+      "affected_node_pair": "node-16 <-> node-9",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.961,
+      "historical_false_positive_rate": 0.036,
+      "is_directly_observed": true,
+      "corroborating_source_count": 4,
+      "ttl_seconds": 3262,
+      "asset_criticality": 0.993
+    }
+  },
+  {
+    "event": {
+      "event_type": "packet_loss",
+      "region": "eu-central-1",
+      "severity": 0.769,
+      "timestamp": "2026-10-25T23:13:12.068984Z",
+      "correlation_id": "9df2025f-0bf7-44bd-8458-272f498dbfa8",
+      "affected_node_pair": "node-7 <-> node-3",
+      "latency_ms": 355.6
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.848,
+      "historical_false_positive_rate": 0.092,
+      "is_directly_observed": true,
+      "corroborating_source_count": 7,
+      "ttl_seconds": 1146,
+      "asset_criticality": 0.704
+    }
+  },
+  {
+    "event": {
+      "event_type": "bandwidth_saturation",
+      "region": "eu-west-1",
+      "severity": 0.293,
+      "timestamp": "2026-10-25T23:53:05.068984Z",
+      "correlation_id": "7d575d17-acfb-4d5e-b7ba-c233b1330c3f",
+      "affected_node_pair": "node-10 <-> node-17",
+      "latency_ms": 89.3
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.363,
+      "historical_false_positive_rate": 0.503,
+      "is_directly_observed": false,
+      "corroborating_source_count": 0,
+      "ttl_seconds": 189,
+      "asset_criticality": 0.392
+    }
+  },
+  {
+    "event": {
+      "event_type": "load_balancer_failure",
+      "region": "us-east-1",
+      "severity": 0.466,
+      "timestamp": "2026-10-25T23:54:39.068984Z",
+      "correlation_id": "fe9eb4ad-f7d5-4124-81b1-c025d1e4d0a3",
+      "affected_node_pair": "node-15 <-> node-9",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.523,
+      "historical_false_positive_rate": 0.432,
+      "is_directly_observed": true,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 212,
+      "asset_criticality": 0.414
+    }
+  },
+  {
+    "event": {
+      "event_type": "connection_timeout",
+      "region": "eu-west-1",
+      "severity": 0.783,
+      "timestamp": "2026-10-25T23:03:53.068984Z",
+      "correlation_id": "e3096619-4791-42e9-823d-11eda1b501d6",
+      "affected_node_pair": "node-4 <-> node-12",
+      "latency_ms": 23313.0
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.875,
+      "historical_false_positive_rate": 0.027,
+      "is_directly_observed": false,
+      "corroborating_source_count": 8,
+      "ttl_seconds": 2446,
+      "asset_criticality": 0.822
+    }
+  },
+  {
+    "event": {
+      "event_type": "cross_region_latency_spike",
+      "region": "eu-central-1",
+      "severity": 0.488,
+      "timestamp": "2026-10-25T23:38:18.068984Z",
+      "correlation_id": "00721f84-54d1-4c6b-9719-61891ef3ea44",
+      "affected_node_pair": "node-11 <-> node-20",
+      "latency_ms": 1662.1
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.779,
+      "historical_false_positive_rate": 0.185,
+      "is_directly_observed": true,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 416,
+      "asset_criticality": 0.464
+    }
+  },
+  {
+    "event": {
+      "event_type": "network_partition",
+      "region": "eu-central-1",
+      "severity": 0.3,
+      "timestamp": "2026-10-25T23:19:39.068984Z",
+      "correlation_id": "6d94dd6d-ece8-4799-9c57-722e138efef9",
+      "affected_node_pair": "node-9 <-> node-2",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.236,
+      "historical_false_positive_rate": 0.826,
+      "is_directly_observed": false,
+      "corroborating_source_count": 0,
+      "ttl_seconds": 157,
+      "asset_criticality": 0.39
+    }
+  },
+  {
+    "event": {
+      "event_type": "gradient_sync_latency",
+      "region": "eu-west-1",
+      "severity": 0.797,
+      "timestamp": "2026-10-25T23:34:23.068984Z",
+      "correlation_id": "e25f4b1c-6d80-4e7c-b4c7-3f2bc8ff1c38",
+      "affected_node_pair": "node-1 <-> node-13",
+      "latency_ms": 4880.5
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.904,
+      "historical_false_positive_rate": 0.089,
+      "is_directly_observed": true,
+      "corroborating_source_count": 8,
+      "ttl_seconds": 2282,
+      "asset_criticality": 0.835
+    }
+  },
+  {
+    "event": {
+      "event_type": "service_discovery_failure",
+      "region": "eu-west-1",
+      "severity": 0.544,
+      "timestamp": "2026-10-25T23:22:19.068984Z",
+      "correlation_id": "6a34b371-78e1-4e70-abb7-1c682097798c",
+      "affected_node_pair": "node-10 <-> node-9",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.592,
+      "historical_false_positive_rate": 0.199,
+      "is_directly_observed": true,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 523,
+      "asset_criticality": 0.404
+    }
+  },
+  {
+    "event": {
+      "event_type": "packet_loss",
+      "region": "us-east-1",
+      "severity": 0.433,
+      "timestamp": "2026-10-25T23:04:27.068984Z",
+      "correlation_id": "73f6e53d-3853-433d-8ce6-21ef7f405bc8",
+      "affected_node_pair": "node-11 <-> node-15",
+      "latency_ms": 193.7
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.517,
+      "historical_false_positive_rate": 0.15,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 446,
+      "asset_criticality": 0.458
+    }
+  },
+  {
+    "event": {
+      "event_type": "bandwidth_saturation",
+      "region": "ap-south-1",
+      "severity": 0.801,
+      "timestamp": "2026-10-25T23:58:30.068984Z",
+      "correlation_id": "6201a9d3-69ac-4f03-9ee0-a843bfe98f8c",
+      "affected_node_pair": "node-14 <-> node-17",
+      "latency_ms": 469.7
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.864,
+      "historical_false_positive_rate": 0.017,
+      "is_directly_observed": true,
+      "corroborating_source_count": 5,
+      "ttl_seconds": 1115,
+      "asset_criticality": 0.906
+    }
+  },
+  {
+    "event": {
+      "event_type": "load_balancer_failure",
+      "region": "us-west-2",
+      "severity": 0.773,
+      "timestamp": "2026-10-25T23:42:55.068984Z",
+      "correlation_id": "7223c68a-a552-4b05-a656-7bc4627292f8",
+      "affected_node_pair": "node-14 <-> node-10",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.824,
+      "historical_false_positive_rate": 0.057,
+      "is_directly_observed": true,
+      "corroborating_source_count": 6,
+      "ttl_seconds": 3005,
+      "asset_criticality": 0.847
+    }
+  },
+  {
+    "event": {
+      "event_type": "connection_timeout",
+      "region": "ap-south-1",
+      "severity": 0.264,
+      "timestamp": "2026-10-25T23:29:14.068984Z",
+      "correlation_id": "394afbe9-1bea-405e-8879-b6633f9b6bb2",
+      "affected_node_pair": "node-5 <-> node-20",
+      "latency_ms": 4787.2
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.53,
+      "historical_false_positive_rate": 0.775,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 73,
+      "asset_criticality": 0.243
+    }
+  },
+  {
+    "event": {
+      "event_type": "cross_region_latency_spike",
+      "region": "us-west-2",
+      "severity": 0.108,
+      "timestamp": "2026-10-25T23:57:19.068984Z",
+      "correlation_id": "f662222e-4dc4-4c8c-b70b-a858a53fddc9",
+      "affected_node_pair": "node-5 <-> node-9",
+      "latency_ms": 547.1
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.445,
+      "historical_false_positive_rate": 0.5,
+      "is_directly_observed": true,
+      "corroborating_source_count": 0,
+      "ttl_seconds": 228,
+      "asset_criticality": 0.141
+    }
+  },
+  {
+    "event": {
+      "event_type": "network_partition",
+      "region": "us-east-1",
+      "severity": 0.354,
+      "timestamp": "2026-10-25T23:39:17.068984Z",
+      "correlation_id": "f57d1709-4752-4194-b5ef-d233ff125eb4",
+      "affected_node_pair": "node-11 <-> node-8",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.634,
+      "historical_false_positive_rate": 0.301,
+      "is_directly_observed": true,
+      "corroborating_source_count": 2,
+      "ttl_seconds": 841,
+      "asset_criticality": 0.642
+    }
+  },
+  {
+    "event": {
+      "event_type": "gradient_sync_latency",
+      "region": "us-west-2",
+      "severity": 0.175,
+      "timestamp": "2026-10-25T23:13:50.068984Z",
+      "correlation_id": "41db898e-14c2-432a-ab86-290ba5acd341",
+      "affected_node_pair": "node-8 <-> node-14",
+      "latency_ms": 1463.9
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.373,
+      "historical_false_positive_rate": 0.763,
+      "is_directly_observed": false,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 232,
+      "asset_criticality": 0.119
+    }
+  },
+  {
+    "event": {
+      "event_type": "service_discovery_failure",
+      "region": "ap-south-1",
+      "severity": 0.377,
+      "timestamp": "2026-10-25T23:26:02.068984Z",
+      "correlation_id": "c40f3609-4fcc-4a5c-b34e-51aff848a956",
+      "affected_node_pair": "node-8 <-> node-15",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.543,
+      "historical_false_positive_rate": 0.413,
+      "is_directly_observed": true,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 627,
+      "asset_criticality": 0.625
+    }
+  },
+  {
+    "event": {
+      "event_type": "packet_loss",
+      "region": "eu-central-1",
+      "severity": 0.517,
+      "timestamp": "2026-10-25T23:14:27.068984Z",
+      "correlation_id": "25795c18-9844-4476-b2e2-054d0e71597a",
+      "affected_node_pair": "node-13 <-> node-2",
+      "latency_ms": 158.0
+    },
+    "trust": {
+      "source_agent": "dns-checker",
+      "confidence": 0.5,
+      "historical_false_positive_rate": 0.137,
+      "is_directly_observed": true,
+      "corroborating_source_count": 2,
+      "ttl_seconds": 580,
+      "asset_criticality": 0.754
+    }
+  },
+  {
+    "event": {
+      "event_type": "bandwidth_saturation",
+      "region": "us-east-1",
+      "severity": 0.749,
+      "timestamp": "2026-10-25T23:48:34.068984Z",
+      "correlation_id": "a70828a7-2f7d-4a08-b0d0-a2b8544940e1",
+      "affected_node_pair": "node-17 <-> node-15",
+      "latency_ms": 195.4
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.744,
+      "historical_false_positive_rate": 0.445,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 122,
+      "asset_criticality": 0.385
+    }
+  },
+  {
+    "event": {
+      "event_type": "load_balancer_failure",
+      "region": "eu-central-1",
+      "severity": 0.289,
+      "timestamp": "2026-10-25T23:51:26.068984Z",
+      "correlation_id": "35185376-c241-4ad1-b6da-7a638fa624f7",
+      "affected_node_pair": "node-13 <-> node-12",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.488,
+      "historical_false_positive_rate": 0.645,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 130,
+      "asset_criticality": 0.18
+    }
+  },
+  {
+    "event": {
+      "event_type": "connection_timeout",
+      "region": "us-west-2",
+      "severity": 0.479,
+      "timestamp": "2026-10-25T23:09:32.068984Z",
+      "correlation_id": "a1b49bf7-07c0-409c-b97b-1538e5a15b79",
+      "affected_node_pair": "node-14 <-> node-8",
+      "latency_ms": 18844.3
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.464,
+      "historical_false_positive_rate": 0.132,
+      "is_directly_observed": true,
+      "corroborating_source_count": 1,
+      "ttl_seconds": 383,
+      "asset_criticality": 0.438
+    }
+  },
+  {
+    "event": {
+      "event_type": "cross_region_latency_spike",
+      "region": "ap-south-1",
+      "severity": 0.135,
+      "timestamp": "2026-10-25T23:41:17.068984Z",
+      "correlation_id": "9df24d5e-f429-4622-b52b-254955c0a74d",
+      "affected_node_pair": "node-2 <-> node-9",
+      "latency_ms": 669.9
+    },
+    "trust": {
+      "source_agent": "bgp-watcher",
+      "confidence": 0.523,
+      "historical_false_positive_rate": 0.584,
+      "is_directly_observed": false,
+      "corroborating_source_count": 0,
+      "ttl_seconds": 42,
+      "asset_criticality": 0.339
+    }
+  },
+  {
+    "event": {
+      "event_type": "network_partition",
+      "region": "eu-central-1",
+      "severity": 0.288,
+      "timestamp": "2026-10-25T23:33:29.068984Z",
+      "correlation_id": "6e106c0e-e9de-4479-8044-9aa0ca304218",
+      "affected_node_pair": "node-16 <-> node-5",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.264,
+      "historical_false_positive_rate": 0.811,
+      "is_directly_observed": false,
+      "corroborating_source_count": 0,
+      "ttl_seconds": 150,
+      "asset_criticality": 0.165
+    }
+  },
+  {
+    "event": {
+      "event_type": "gradient_sync_latency",
+      "region": "eu-west-1",
+      "severity": 0.946,
+      "timestamp": "2026-10-25T23:19:12.068984Z",
+      "correlation_id": "64457ea4-3283-4689-830a-e19e143a5180",
+      "affected_node_pair": "node-6 <-> node-8",
+      "latency_ms": 4182.7
+    },
+    "trust": {
+      "source_agent": "netflow-monitor",
+      "confidence": 0.892,
+      "historical_false_positive_rate": 0.07,
+      "is_directly_observed": true,
+      "corroborating_source_count": 6,
+      "ttl_seconds": 1030,
+      "asset_criticality": 0.996
+    }
+  },
+  {
+    "event": {
+      "event_type": "service_discovery_failure",
+      "region": "us-east-1",
+      "severity": 0.802,
+      "timestamp": "2026-10-25T23:31:08.068984Z",
+      "correlation_id": "f8dca309-b5b3-4023-bd09-e37c7f9c1321",
+      "affected_node_pair": "node-8 <-> node-5",
+      "latency_ms": null
+    },
+    "trust": {
+      "source_agent": "lb-health-agent",
+      "confidence": 0.888,
+      "historical_false_positive_rate": 0.108,
+      "is_directly_observed": true,
+      "corroborating_source_count": 7,
+      "ttl_seconds": 3321,
+      "asset_criticality": 0.928
+    }
+  },
+  {
+    "event": {
+      "event_type": "packet_loss",
+      "region": "eu-west-1",
+      "severity": 0.468,
+      "timestamp": "2026-10-25T23:21:11.068984Z",
+      "correlation_id": "bcf1fcb5-4109-48d6-9f7b-07b84485c04f",
+      "affected_node_pair": "node-9 <-> node-7",
+      "latency_ms": 195.7
+    },
+    "trust": {
+      "source_agent": "synthetic-prober",
+      "confidence": 0.536,
+      "historical_false_positive_rate": 0.171,
+      "is_directly_observed": false,
+      "corroborating_source_count": 3,
+      "ttl_seconds": 312,
+      "asset_criticality": 0.497
+    }
+  }
+]

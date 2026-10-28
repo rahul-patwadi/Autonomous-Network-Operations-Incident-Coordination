@@ -15,11 +15,11 @@ from cost_model import communication_cost, estimate_p_real, risk, task_benefit
 from schemas import Action, Decision, Message
 
 # Below this EV, no action is considered worth taking -- default to SUPPRESS.
-EV_FLOOR = 0.05
+EV_FLOOR = 0.0
 
 # Above this Risk, PROPOSE_REMEDIATION is not offered as a candidate;
 # REQUEST_APPROVAL is used instead, regardless of how confident we are.
-HIGH_IMPACT_RISK_THRESHOLD = 0.4
+HIGH_IMPACT_RISK_THRESHOLD = 0.55
 
 CANDIDATE_ACTIONS = [
     Action.SUPPRESS,

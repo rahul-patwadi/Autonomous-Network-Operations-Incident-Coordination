@@ -7,7 +7,8 @@ inputs to the EV formula in policy.py:
 
     EV(action) = TaskBenefit(action) - CommunicationCost(action) - Risk(action)
 
-Design notes (see adr/0001-domain-and-scope.md for the full reasoning):
+Design notes (see adr/0001-domain-and-ev-formula.md and
+adr/0002-cost-model-weights.md for the full reasoning):
 - Suppression is NOT free. Risk() includes a term for the cost of missing a
   real incident by staying silent, not just the cost of a false positive.
 - "High impact" actions (PROPOSE_REMEDIATION on a critical/wide-blast-radius
@@ -116,7 +117,11 @@ def risk(action: Action, message: Message, blast_radius: int = 1) -> float:
     severity = message.event.severity
     criticality = message.trust.asset_criticality
 
-    false_positive_risk = (1.0 - p_real) * DISRUPTION_COST[action]
+    impact_scale = 1.0
+    if action in {Action.PROPOSE_REMEDIATION, Action.REQUEST_APPROVAL}:
+
+        impact_scale = 1.0 + criticality * blast_radius
+    false_positive_risk = (1.0 - p_real) * DISRUPTION_COST[action] * impact_scale
 
     silence_risk = 0.0
     if action in SILENT_ACTIONS:
