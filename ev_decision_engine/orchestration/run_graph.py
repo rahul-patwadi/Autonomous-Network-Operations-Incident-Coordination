@@ -41,6 +41,7 @@ def main() -> None:
 
     for line in state["log"]:
         print(line)
+    print(f"Proposed fix: {state['proposed_fix']}")
     decision = state["decision"]
     if decision is not None:
         print(f"Final chosen action: {decision.chosen_action.value}")

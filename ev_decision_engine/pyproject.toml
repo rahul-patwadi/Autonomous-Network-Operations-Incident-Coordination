@@ -10,6 +10,7 @@ dependencies = [
     "torch>=2.5",
     "sqlalchemy>=2.0",
     "langgraph>=1.2.18",
+    "langchain-ollama>=1.1.0",
 ]
 
 [dependency-groups]
