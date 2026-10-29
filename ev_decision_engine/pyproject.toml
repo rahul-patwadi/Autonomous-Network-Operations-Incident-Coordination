@@ -9,6 +9,7 @@ dependencies = [
     "uvicorn[standard]>=0.32",
     "torch>=2.5",
     "sqlalchemy>=2.0",
+    "langgraph>=1.2.18",
 ]
 
 [dependency-groups]
