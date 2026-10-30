@@ -1,4 +1,4 @@
-"""LangGraph wiring: telemetry -> correlation -> decision -> (response -> human_gate)."""
+"""LangGraph wiring: telemetry -> correlation -> decision -> (response -> human_gate -> execute)."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ from langgraph.graph.state import CompiledStateGraph
 from orchestration.nodes import (
     correlation_node,
     decision_node,
+    execute_node,
     human_gate_node,
     response_node,
     telemetry_node,
@@ -47,6 +48,7 @@ def build_graph() -> CompiledStateGraph[IncidentState, None, IncidentState, Inci
     builder.add_node("decision", decision_node)
     builder.add_node("response", response_node)
     builder.add_node("human_gate", human_gate_node)
+    builder.add_node("execute", execute_node)
 
     builder.add_edge(START, "telemetry")
     builder.add_edge("telemetry", "correlation")
@@ -55,6 +57,7 @@ def build_graph() -> CompiledStateGraph[IncidentState, None, IncidentState, Inci
         "decision", route_after_decision, {"response": "response", "end": END}
     )
     builder.add_edge("response", "human_gate")
-    builder.add_edge("human_gate", END)
+    builder.add_edge("human_gate", "execute")
+    builder.add_edge("execute", END)
 
     return builder.compile(checkpointer=MemorySaver(serde=CHECKPOINT_SERDE))

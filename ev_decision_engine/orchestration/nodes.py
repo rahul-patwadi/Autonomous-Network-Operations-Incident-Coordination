@@ -9,6 +9,7 @@ from langchain_ollama import ChatOllama
 from langgraph.types import interrupt
 
 from orchestration.state import IncidentState
+from orchestration.tools import REMEDIATION_TOOLS, TOOLS_BY_NAME
 from policy import decide
 
 
@@ -31,8 +32,8 @@ def decision_node(state: IncidentState) -> dict[str, Any]:
 
 
 SYSTEM_PROMPT = (
-    "You are a network operations remediation assistant. Given an incident, propose ONE "
-    "concrete remediation action and a one-sentence rationale. Be specific and concise. "
+    "You are a network operations remediation assistant. Given an incident, select the single "
+    "most appropriate remediation tool by calling it with arguments taken from the incident. "
     "Do not invent details that aren't given."
 )
 
@@ -51,11 +52,22 @@ def _incident_prompt(state: IncidentState) -> str:
 
 
 def response_node(state: IncidentState) -> dict[str, Any]:
+    """Select (but do not execute) a remediation tool."""
     try:
-        llm = ChatOllama(model="llama3.2")
+        llm = ChatOllama(model="llama3.2").bind_tools(REMEDIATION_TOOLS)
         reply = llm.invoke([SystemMessage(SYSTEM_PROMPT), HumanMessage(_incident_prompt(state))])
-        fix = str(reply.content).strip()
-        return {"proposed_fix": fix, "log": ["response: LLM proposed a fix"]}
+        if not reply.tool_calls:
+            raise ValueError("LLM returned no tool call")
+        call = reply.tool_calls[0]
+        if call["name"] not in TOOLS_BY_NAME:
+            raise ValueError(f"LLM selected unknown tool {call['name']!r}")
+        args = ", ".join(f"{k}={v!r}" for k, v in call["args"].items())
+        return {
+            "proposed_tool": call["name"],
+            "proposed_tool_args": call["args"],
+            "proposed_fix": f"{call['name']}({args})",
+            "log": [f"response: LLM selected tool {call['name']}"],
+        }
     except Exception as exc:  # Ollama unreachable, model missing, etc. Never crash the graph.
         fix = f"placeholder remediation for {state['message'].event.event_type}"
         return {
@@ -72,3 +84,13 @@ def human_gate_node(state: IncidentState) -> dict[str, Any]:
     status = "approved" if verdict == "approved" else "rejected"
     outcome = "fix approved" if status == "approved" else "fix was rejected"
     return {"approval_status": status, "log": [f"human_gate: {outcome} (approval_status={status})"]}
+
+
+def execute_node(state: IncidentState) -> dict[str, Any]:
+    if state["approval_status"] != "approved":
+        return {"log": ["execute: fix not approved; no action taken"]}
+    tool_name = state["proposed_tool"]
+    if tool_name is None:
+        return {"log": ["execute: approved but no tool was selected; no action taken"]}
+    result = str(TOOLS_BY_NAME[tool_name].invoke(state["proposed_tool_args"] or {}))
+    return {"execution_result": result, "log": [f"execute: {result}"]}

@@ -60,6 +60,7 @@ def main() -> None:
     for line in result["log"]:
         print(line)
     print(f"Approval status: {result['approval_status']}")
+    print(f"Execution result: {result['execution_result']}")
 
 
 if __name__ == "__main__":
