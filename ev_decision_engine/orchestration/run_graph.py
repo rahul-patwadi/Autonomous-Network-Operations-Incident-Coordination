@@ -8,6 +8,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 
 from langchain_core.runnables import RunnableConfig
+from langgraph.types import Command
 
 from orchestration.graph import build_graph
 from orchestration.state import new_state
@@ -34,17 +35,31 @@ EXAMPLE = Message(
 )
 
 
+def prompt_for_verdict() -> str:
+    while True:
+        answer = input("Approve this fix? [approve/reject]: ").strip().lower()
+        if answer in ("approve", "reject"):
+            return "approved" if answer == "approve" else "rejected"
+        print("Please type 'approve' or 'reject'.")
+
+
 def main() -> None:
     graph = build_graph()
     config: RunnableConfig = {"configurable": {"thread_id": "incident-partition-4471"}}
-    state = graph.invoke(new_state(EXAMPLE), config)
+    result = graph.invoke(new_state(EXAMPLE), config)
 
-    for line in state["log"]:
+    if "__interrupt__" in result:
+        payload = result["__interrupt__"][0].value
+        event = EXAMPLE.event
+        print("--- Human review required ---")
+        print(f"Incident: {event.event_type} in {event.region} (severity {event.severity})")
+        print(f"Chosen action: {payload['chosen_action']}")
+        print(f"Proposed fix: {payload['proposed_fix']}")
+        result = graph.invoke(Command(resume=prompt_for_verdict()), config)
+
+    for line in result["log"]:
         print(line)
-    print(f"Proposed fix: {state['proposed_fix']}")
-    decision = state["decision"]
-    if decision is not None:
-        print(f"Final chosen action: {decision.chosen_action.value}")
+    print(f"Approval status: {result['approval_status']}")
 
 
 if __name__ == "__main__":

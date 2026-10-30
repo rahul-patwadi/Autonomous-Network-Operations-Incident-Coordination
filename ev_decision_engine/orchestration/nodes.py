@@ -6,6 +6,7 @@ from typing import Any
 
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_ollama import ChatOllama
+from langgraph.types import interrupt
 
 from orchestration.state import IncidentState
 from policy import decide
@@ -64,5 +65,10 @@ def response_node(state: IncidentState) -> dict[str, Any]:
 
 
 def human_gate_node(state: IncidentState) -> dict[str, Any]:
-    # Skeleton: auto-approves until a real human-in-the-loop interrupt is added.
-    return {"approval_status": "approved", "log": ["human_gate: approval_status=approved"]}
+    decision = state["decision"]
+    action = decision.chosen_action.value if decision is not None else None
+    # Pauses the graph; on resume, interrupt() returns the value passed to Command(resume=...).
+    verdict = interrupt({"proposed_fix": state["proposed_fix"], "chosen_action": action})
+    status = "approved" if verdict == "approved" else "rejected"
+    outcome = "fix approved" if status == "approved" else "fix was rejected"
+    return {"approval_status": status, "log": [f"human_gate: {outcome} (approval_status={status})"]}

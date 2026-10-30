@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Literal
 
 from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 
@@ -19,6 +20,17 @@ from orchestration.state import IncidentState
 from schemas import Action
 
 REMEDIATION_ACTIONS = {Action.PROPOSE_REMEDIATION, Action.REQUEST_APPROVAL}
+
+# Checkpointed state holds our schema types; allow-list them so msgpack can restore them.
+CHECKPOINT_SERDE = JsonPlusSerializer(
+    allowed_msgpack_modules=[
+        ("schemas", "Action"),
+        ("schemas", "Decision"),
+        ("schemas", "Event"),
+        ("schemas", "Message"),
+        ("schemas", "TrustMetadata"),
+    ]
+)
 
 
 def route_after_decision(state: IncidentState) -> Literal["response", "end"]:
@@ -45,4 +57,4 @@ def build_graph() -> CompiledStateGraph[IncidentState, None, IncidentState, Inci
     builder.add_edge("response", "human_gate")
     builder.add_edge("human_gate", END)
 
-    return builder.compile(checkpointer=MemorySaver())
+    return builder.compile(checkpointer=MemorySaver(serde=CHECKPOINT_SERDE))
